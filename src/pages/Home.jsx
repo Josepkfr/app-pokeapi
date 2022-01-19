@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 // import api from "../helpers/httpcommon";
 import axios from "axios";
-import CardMain from "../components/Cards/CardMain";
-import { Button } from "reactstrap";
+import { Button, CardGroup, Container, Row } from "reactstrap";
+import CardPokemon from "../components/Cards/CardPokemon";
 
 const Home = () => {
   const [listPokemons, setListPokemons] = useState([]);
@@ -17,17 +17,19 @@ const Home = () => {
     getPokemons("https://pokeapi.co/api/v2/pokemon/");
   }, []);
   return (
-    <div>
+    <Container>
       <Button color="primary" outline>
         Back
       </Button>
       <Button color="primary" outline>
         Next
       </Button>
-      {listPokemons.map((pokemon, index) => {
-        return <CardMain key={index} name={pokemon.name} />;
-      })}
-    </div>
+      <Row md="4" sm="2" xs="1" className="">
+        {listPokemons.map((pokemon, index) => {
+          return <CardPokemon key={index} url={pokemon.url} />;
+        })}
+      </Row>
+    </Container>
   );
 };
 
