@@ -1,19 +1,10 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { CardImg, CardTitle } from "reactstrap";
+import useFetch from "../../hooks/useFetch";
 import CardComponent from "./CardComponent";
 
 const CardPokemon = ({ url }) => {
-  const [dataPokemon, setDataPokemon] = useState({});
-
-  const getDataPokemon = async (url) => {
-    const { data } = await axios.get(url);
-    setDataPokemon(data);
-  };
-
-  useEffect(() => {
-    getDataPokemon(url);
-  }, [url]);
+  const dataPokemon = useFetch(url);
 
   return (
     <CardComponent>

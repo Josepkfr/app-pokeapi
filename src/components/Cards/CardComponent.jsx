@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardBody } from "reactstrap";
+import "../../styles/components/Card.css";
 
 const CardComponent = ({ children }) => {
   return (

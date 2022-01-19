@@ -1,34 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 // import api from "../helpers/httpcommon";
-import axios from "axios";
-import { Button, CardGroup, Container, Row } from "reactstrap";
+import { Button, Container } from "reactstrap";
 import CardPokemon from "../components/Cards/CardPokemon";
+import "../styles/Home.css";
+import useFetch from "../hooks/useFetch";
 
 const Home = () => {
-  const [listPokemons, setListPokemons] = useState([]);
+  const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
+  const data = useFetch(url);
+  const { results } = data;
 
-  const getPokemons = async (url) => {
-    const { data } = await axios.get(url);
-    const { results } = data;
-    setListPokemons(results);
+  const nextPage = () => {
+    setUrl(data.next);
   };
 
-  useEffect(() => {
-    getPokemons("https://pokeapi.co/api/v2/pokemon/");
-  }, []);
+  const previousPage = () => {
+    setUrl(data.previous);
+  };
+
   return (
     <Container>
-      <Button color="primary" outline>
-        Back
-      </Button>
-      <Button color="primary" outline>
-        Next
-      </Button>
-      <Row md="4" sm="2" xs="1" className="">
-        {listPokemons.map((pokemon, index) => {
-          return <CardPokemon key={index} url={pokemon.url} />;
-        })}
-      </Row>
+      <Container className="d-flex justify-content-between">
+        <Button onClick={previousPage} color="primary" outline>
+          Back
+        </Button>
+        <Button onClick={nextPage} color="primary" outline>
+          Next
+        </Button>
+      </Container>
+      {results && (
+        <div className="Card-Grid">
+          {results.map((pokemon, index) => {
+            return <CardPokemon key={index} url={pokemon.url} />;
+          })}
+        </div>
+      )}
     </Container>
   );
 };
