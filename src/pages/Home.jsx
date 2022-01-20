@@ -54,16 +54,14 @@ const Home = () => {
     <Container>
       <div className="d-flex justify-content-end my-3">
         <Col sm={3}>
-          <Input innerRef={text} onChange={filter} />
+          <Input innerRef={text} onChange={filter} placeholder="Search..." />
         </Col>
       </div>
       <Container className="d-flex justify-content-between">
         <Button onClick={previousPage} color="primary" outline>
           Back
         </Button>
-        <p onClick={previousPage} color="primary" outline>
-          {actualPage / 20 + "/" + totalPage}
-        </p>
+        <p onClick={previousPage}>{actualPage / 20 + "/" + totalPage}</p>
         <Button onClick={nextPage} color="primary" outline>
           Next
         </Button>

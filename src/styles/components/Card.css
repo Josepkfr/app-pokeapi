@@ -1,8 +1,20 @@
 .card:hover {
-  background-color: aqua;
+  background: rgb(15, 148, 175);
+  background: linear-gradient(
+    45deg,
+    rgba(15, 148, 175, 0.8981967787114846) 20%,
+    rgba(200, 30, 192, 0.6965161064425771) 60%,
+    rgba(128, 30, 200, 0.8981967787114846) 100%
+  );
   cursor: pointer;
 }
 .card:active {
-  background-color: black;
-  color: white;
+  background: rgb(15, 148, 175);
+  background: linear-gradient(
+    246deg,
+    rgba(15, 148, 175, 0.8981967787114846) 20%,
+    rgba(200, 30, 192, 0.6965161064425771) 60%,
+    rgba(128, 30, 200, 0.8981967787114846) 100%
+  );
+  color: black;
 }
