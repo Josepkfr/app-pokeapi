@@ -1,10 +1,13 @@
 import React from "react";
+import { Nav, NavItem } from "reactstrap";
 
 const Header = () => {
   return (
-    <div>
-      <h1>header</h1>
-    </div>
+    <Nav justified>
+      <NavItem>
+        <img src="/assets/img/logo.png" alt="" />
+      </NavItem>
+    </Nav>
   );
 };
 
